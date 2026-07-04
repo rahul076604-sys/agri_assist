@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farmer AI Assistant</title>
+  <link rel="stylesheet" href="/static/form1.css">
+</head>
+<body>
+
+  <header>
+    <h1>🌾 Agriculture  Farmer Assistant</h1>
+    <p>Get insights for soil, weather, and crop management</p>
+  </header>
+
+  <div class="container">
+    <form id="aiForm" action='/form.html/predict' method='post'>
+     <label for="region">Region</label>
+      <select id="region" name='region' required>
+        <option value="">-- Select Region --</option>
+        <option value="North">North</option>
+        <option value="South">South</option>
+        <option value="East">East</option>
+        <option value="West">West</option>
+      </select>
+
+      <label for="soil type">Soil Type</label>
+      <select id="soil_type" name='soil_type' required>
+        <option value="">-- Select Soil Type --</option>
+        <option value="Clay">Clay</option>
+        <option value="Sandy">Sandy</option>
+        <option value="Loamy">Loamy</option>
+        <option value="Silt">Silt</option>
+        <option value="Peaty">Peaty</option>
+        <option value="Chalky">Chalky</option>
+      </select>
+
+      <label for="Crop">Crop</label>
+      <input type="text" style="width:550px" id="Crop" name='crop' placeholder="Enteor Crop name" required>
+
+      <label for="rainfall">rainfall(mm)</label>
+      <input type="text" style="width:550px" id="rainfall" name='rainfall' placeholder="Enter amount of rainfall happens in mm" required>
+
+
+      <label for="temperature">Temperature(C)</label>
+      <input type="text" style="width:550px" id="temperature" name='temperature' placeholder="Enter temperature in celcius" required>
+
+
+      <label for="fertilizer_used">fertilizer_used</label>
+      <select id="fertilizer_used" name='fertilizer_used' required>
+        <option value="">-- select fertilizer used or not --</option>
+        <option value="True">True</option>
+        <option value="False">false</option>
+        
+      </select>
+
+
+      <label for="irrigation_used">irrigation_used</label>
+      <select id="irrigation_used" name='irrigation_used' required>
+        <option value="">-- select irrigation used or not --</option>
+        <option value="True">True</option>
+        <option value="False">false</option>
+        
+      </select>
+      
+      
+      <label for="weather_condition">Weather weather_condition</label>
+      <select id="weather_condition" name='weather_condition' required>
+        <option value="">-- Select weather condition --</option>
+        <option value="Sunny">Sunny</option>
+        <option value="Rainy">Rainy</option>
+        <option value="Cloudy">Cloudy</option>
+        <option value="Windy">Windy</option>
+      </select>
+
+       <label for="days_to_harvest">days_to_harvest</label>
+      <input type="text" style="width:550px" id="days_to_harvest" name='days_to_harvest' placeholder="Enter days to harvets " required>
+
+      <button type="submit">Get yield prediction</button>
+    </form>
+
+    <div class="result-box">
+    <h3>{{prediction_text}}</h3>
+    </div>
+  </div>
+</body>
+</html>
