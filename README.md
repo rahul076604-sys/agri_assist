@@ -1,2 +1,2 @@
 # agri_assist
-Agri assist predict actual crop yield on the basis of user input information.
+Farmer AI Assistant is an end-to-end intelligent agriculture platform that combines Machine Learning and web technologies to empower farmers with data-driven decision-making. The platform analyzes environmental, soil, and crop-related data to generate accurate predictions and recommendations, helping increase productivity while minimizing resource wastage.
