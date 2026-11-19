@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agri Project Weather</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #e0f7fa;
+      text-align: center;
+      padding: 40px;
+    }
+    .weather-box {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      display: inline-block;
+      min-width: 250px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: none;
+      background: #00796b;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #004d40;
+    }
+  </style>
+</head>
+<body>
+  <h1>🌾 Agri Weather Dashboard</h1>
+  <div class="weather-box" id="weather">Click button to fetch weather</div>
+  <br>
+  <button onclick="getWeather()">Get My Weather</button>
+
+  <script>
+    async function getWeather() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(async (position) => {
+          let lat = position.coords.latitude;
+          let lon = position.coords.longitude;
+
+          let apiKey = 'efe87c665f763a01d6b3fb3cf2b00e18'; // 🔑 Replace with your OpenWeatherMap API key
+          let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+
+          try {
+            let response = await fetch(url);
+            let data = await response.json();
+
+            document.getElementById("weather").innerHTML = `
+              📍 <b>${data.name}</b><br>
+              🌡 Temperature: ${data.main.temp} °C<br>
+              💧 Humidity: ${data.main.humidity}%<br>
+              🌤 Condition: ${data.weather[0].description}<br>
+              🌬 Wind: ${data.wind.speed} m/s
+            `;
+          } catch (error) {
+            document.getElementById("weather").innerHTML = "⚠️ Failed to fetch weather data.";
+          }
+        });
+      } else {
+        alert("Geolocation not supported by this browser.");
+      }
+    }
+  </script>
+</body>
+</html>
